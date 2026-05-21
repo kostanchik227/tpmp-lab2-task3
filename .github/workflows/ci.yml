@@ -1,0 +1,20 @@
+name: C Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install compiler
+        run: sudo apt update && sudo apt install -y build-essential
+
+      - name: Build with Make
+        run: make
+
+      - name: Run program
+        run: ./my_program
